@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appccelerate.CheckHintPathT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appccelerate.CheckHintPathTask.Facts", "Appccelerate.CheckHintPathTask.Facts\Appccelerate.CheckHintPathTask.Facts.csproj", "{EC7300D3-2223-4B6C-8102-E5F569E6D9DC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{82E72B2A-BE1D-4756-9383-A83438EBDACF}"
+	ProjectSection(SolutionItems) = preProject
+		Appccelerate.CheckHintPathTask.nuspec = Appccelerate.CheckHintPathTask.nuspec
+		Appccelerate.CheckHintPathTask.targets = Appccelerate.CheckHintPathTask.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
