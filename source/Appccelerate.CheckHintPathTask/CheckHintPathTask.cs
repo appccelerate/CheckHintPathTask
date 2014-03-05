@@ -67,7 +67,8 @@ namespace Appccelerate.CheckHintPathTask
                 this.LogViolation(violation, this.ProjectFileFullPath);
             }
 
-            return !violations.Any();
+            bool continueBuild = !(violations.Any() && this.TreatWarningsAsErrors);
+            return continueBuild;
         }
 
         public bool DoesFileExist(string path)
