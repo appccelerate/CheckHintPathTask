@@ -15,8 +15,8 @@
         TreatWarningsAsErrors="$(TreatWarningsAsErrors)"
         ProjectFileFullPath="$(MSBuildProjectFullPath)"
         ProjectFolder="$(ProjectDir)"
-        ExcludedReferencePrefixes=""
-        KnownHintPathPrefixes="" />
+        ExcludedReferencePrefixes="$(ExcludedReferencePrefixes)"
+        KnownHintPathPrefixes="$(KnownHintPathPrefixes)" />
   </Target>
 </Project>
 

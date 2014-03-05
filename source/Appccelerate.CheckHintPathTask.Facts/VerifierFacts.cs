@@ -61,7 +61,7 @@ namespace Appccelerate.CheckHintPathTask
             XDocument projectFile = ProjectBuilder
                 .Create()
                 .WithReferences()
-                .AddReference(Reference, HintPath)
+                    .AddReference(Reference, HintPath)
                 .Build();
 
             IReadOnlyCollection<Violation> result = this.testee.Verify(projectFile, ProjectFolder, IgnoreExcludedPrefix, HintPathPrefixes(Prefix));
@@ -78,13 +78,35 @@ namespace Appccelerate.CheckHintPathTask
             XDocument projectFile = ProjectBuilder
                 .Create()
                 .WithReferences()
-                .AddReference(Reference)
+                    .AddReference(Reference)
                 .Build();
 
             IReadOnlyCollection<Violation> result = this.testee.Verify(
                 projectFile, 
                 ProjectFolder, 
                 ExcludedReferencePrefixes(ReferencePrefix),
+                IgnoreHintPathPrefix);
+
+            result.Should().BeEmpty();
+        }
+
+        [Fact]
+        public void ReturnsNoViolation_WhenReferenceIsSpecifiedWithVersion()
+        {
+            const string Reference = "Foo";
+            const string Prefix = "..\\";
+            const string HintPath = Prefix + Reference + "\\reference.dll";
+
+            XDocument projectFile = ProjectBuilder
+                .Create()
+                .WithReferences()
+                    .AddReference(Reference, "1.2.3.4", HintPath)
+                .Build();
+
+            IReadOnlyCollection<Violation> result = this.testee.Verify(
+                projectFile,
+                ProjectFolder,
+                IgnoreExcludedPrefix,
                 IgnoreHintPathPrefix);
 
             result.Should().BeEmpty();
