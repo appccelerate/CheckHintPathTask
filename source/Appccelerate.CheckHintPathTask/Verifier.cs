@@ -29,7 +29,7 @@ namespace Appccelerate.CheckHintPathTask
         public const string HintPathDoesNotContainReferenceId = "HintPath does not contain reference id";
         public const string HintPathWithWrongPrefix = "HintPath does not start with known prefix";
         public const string HintPathDoesNotExistOnFileSystem = "the file referenced by the HintPath does not exist";
-        
+
         private readonly IFileVerifier fileVerifier;
 
         public Verifier(IFileVerifier fileVerifier)
@@ -38,7 +38,7 @@ namespace Appccelerate.CheckHintPathTask
         }
 
         public IReadOnlyCollection<Violation> Verify(
-            XDocument projectFile, 
+            XDocument projectFile,
             string projectFolder,
             IReadOnlyCollection<string> excludedPrefixes,
             IReadOnlyCollection<string> knownHintPathPrefixes)
@@ -57,7 +57,12 @@ namespace Appccelerate.CheckHintPathTask
             return violations;
         }
 
-        private IEnumerable<Violation> CheckHintPath(string projectFolder, IReadOnlyCollection<string> excludedPrefixes, IReadOnlyCollection<string> knownHintPathPrefixes, string hintPath, string id)
+        private IEnumerable<Violation> CheckHintPath(
+            string projectFolder,
+            IReadOnlyCollection<string> excludedPrefixes,
+            IReadOnlyCollection<string> knownHintPathPrefixes,
+            string hintPath,
+            string id)
         {
             var violations = new List<Violation>();
 
@@ -72,10 +77,10 @@ namespace Appccelerate.CheckHintPathTask
                 return violations;
             }
 
-            violations.AddRange(this.CheckCorrectHintPathPrefix(knownHintPathPrefixes, hintPath, id));
+            violations.AddRange(this.CheckHintPathPrefix(knownHintPathPrefixes, hintPath, id));
             violations.AddRange(this.CheckHintPathContainsReferenceId(hintPath, id));
             violations.AddRange(this.CheckHintPathExistsOnFileSystem(projectFolder, hintPath, id));
-            
+
             return violations;
         }
 
@@ -92,7 +97,7 @@ namespace Appccelerate.CheckHintPathTask
             return references;
         }
 
-        private IEnumerable<Violation> CheckCorrectHintPathPrefix(IReadOnlyCollection<string> knownHintPathPrefixes, string hintPath, string id)
+        private IEnumerable<Violation> CheckHintPathPrefix(IReadOnlyCollection<string> knownHintPathPrefixes, string hintPath, string id)
         {
             if (knownHintPathPrefixes.All(prefix => !hintPath.StartsWith(prefix)))
             {
