@@ -49,7 +49,7 @@ namespace Appccelerate.CheckHintPathTask
             foreach (XElement reference in references)
             {
                 string hintPath = reference.GetHintPath();
-                string referenceId = reference.GetAttributeValue("Include");
+                string referenceId = reference.GetAttributeValue("Include").Split(',')[0];
 
                 violations.AddRange(this.CheckHintPath(projectFolder, excludedPrefixes, knownHintPathPrefixes, hintPath, referenceId));
             }

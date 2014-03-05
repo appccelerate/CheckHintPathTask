@@ -49,6 +49,12 @@ namespace Appccelerate.CheckHintPathTask
             return this;
         }
 
+        public IReferences AddReference(string id, string version, string hintPath)
+        {
+            this.references.Add("<Reference Include=\"" + id + ", Version=" + version + ", Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL\"><HintPath>" + hintPath + "</HintPath></Reference>");
+            return this;
+        }
+
         public XDocument Build()
         {
             return XDocument.Parse(
@@ -137,5 +143,7 @@ namespace Appccelerate.CheckHintPathTask
         IReferences AddReference(string id);
 
         IReferences AddReference(string id, string hintPath);
+
+        IReferences AddReference(string id, string version, string hintPath);
     }
 }
