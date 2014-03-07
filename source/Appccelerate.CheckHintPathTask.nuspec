@@ -14,6 +14,7 @@
     <description>MSBuild task checking whether HintPath is set correctly.</description>
     <copyright>Copyright 2012-2014</copyright>
     <tags>Appccelerate, MSBuild</tags>
+    <developmentDependency>true</developmentDependency>
     <dependencies/>	
   </metadata>
   <files>
