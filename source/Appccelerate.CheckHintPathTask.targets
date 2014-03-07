@@ -4,6 +4,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">$(MSBuildProjectDirectory)..\</SolutionDir>
     <ExcludedReferencePrefixes Condition="$(ExcludedReferencePrefixes) == ''">System,Microsoft,Windows,Presentation</ExcludedReferencePrefixes>
     <KnownHintPathPrefixes Condition="$(KnownHintPathPrefixes) == ''">..\packages</KnownHintPathPrefixes>
+    <TreatWarningsAsErrors Condition="$(TreatWarningsAsErrors) == ''">false</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <UsingTask
