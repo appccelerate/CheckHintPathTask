@@ -7,11 +7,16 @@
     <TreatWarningsAsErrors Condition="$(TreatWarningsAsErrors) == ''">false</TreatWarningsAsErrors>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <BuildDependsOn>$(BuildDependsOn);CheckHintPaths<BuildDependsOn>
+    <RebuildDependsOn>$(RebuildDependsOn);CheckHintPaths<RebuildDependsOn>
+  </PropertyGroup>
+  
   <UsingTask
     TaskName="CheckHintPathTask"
     AssemblyFile="$(MSBuildThisFileDirectory)..\Appccelerate.CheckHintPathTask.dll" />
 
-  <Target Name="AfterBuild">
+  <Target Name="CheckHintPaths">
     <CheckHintPathTask
         TreatWarningsAsErrors="$(TreatWarningsAsErrors)"
         ProjectFileFullPath="$(MSBuildProjectFullPath)"
