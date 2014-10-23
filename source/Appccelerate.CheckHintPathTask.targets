@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <BuildDependsOn>$(BuildDependsOn);CheckHintPaths<BuildDependsOn>
-    <RebuildDependsOn>$(RebuildDependsOn);CheckHintPaths<RebuildDependsOn>
+    <BuildDependsOn>$(BuildDependsOn);CheckHintPaths</BuildDependsOn>
+    <RebuildDependsOn>$(RebuildDependsOn);CheckHintPaths</RebuildDependsOn>
   </PropertyGroup>
   
   <UsingTask
